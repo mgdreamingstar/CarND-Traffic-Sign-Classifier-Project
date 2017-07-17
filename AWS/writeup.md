@@ -104,11 +104,15 @@ My final model results were:
 If an iterative approach was chosen:
 
 - What was the first architecture that was tried and why was it chosen?
-  
+  The first architecture is a convolutional layer which input is 32x32x1 and output is 28x28x6. It will coarsely recognize the feature on images.
 - What were some problems with the initial architecture?
+  It could have overfitting problem.
 - How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+  After the first architecture, some other architecture are added which are pooling, dropout layers, and a relu activation layer. The pooling layer will share the weights, and the dropout layer will take care of overfitting.
 - Which parameters were tuned? How were they adjusted and why?
+  The epoch parameter is tuned to train the model several times to get a higher accuracy.
 - What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+  A convolution layer will share the weights between kernels which will decrease the number of weights. A dropout layer will help with tackling the overfitting problem.
 
 If a well known architecture was chosen:
 * What architecture was chosen? 
@@ -122,11 +126,15 @@ If a well known architecture was chosen:
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are five German traffic signs that I found on the web. 
+
+The third image might be difficult to classify because the exclamation mark seems connected so it's like a straight line, the model may classify it to another pattern. And contrast of the image is relatively low, so the model may misclassify this picture. 
+
+The second and fifth images might difficult to classify because the brightness of the them are relatively low which could make the model to misclassify them.
 
 ![alt text][image5]
 
-The third image might be difficult to classify because the exclamation mark seems connected so it's like a straight line. All the other 4 images' qualities are quite good to classify.
+
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -140,8 +148,9 @@ Here are the results of the prediction:
 |    Turn left ahead    |    Turn left ahead    |
 |      No passing       |      No passing       |
 
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of 0.922
+The accuracy on the captured inages is 80% while it was 92.2% on the testing set thus It seems the model is overfitting, however the new captured images only have 5 images, so this conclusion may not be ture. This should be test on a larger data set.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
